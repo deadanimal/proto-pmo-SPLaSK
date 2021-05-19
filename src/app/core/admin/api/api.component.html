@@ -1,0 +1,745 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">API Management</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-tasks text-dark"> </i>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+
+        <div class="col-lg-6 col-5 text-white text-right">
+          <!-- <a class="btn btn-sm btn-neutral" href="javascript:void(0)"> New </a> -->
+
+          <a class="btn btn-sm btn-default" (click)="openModal(generateToken)">
+            Generate Token
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mb-0">Total New API Registered This Year</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="chartAPImanagementline1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mb-0">API Comsuption Analysis</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="chartAPImanagementdonut1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mb-0">API Comsuption by Number</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="chartAPImanagementstacked1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mb-0">Add New API Endpoint</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <form>
+            <div class="form-group row">
+              <label
+                class="col-md-4 col-form-label form-control-label"
+                for="example-text-input-api1"
+              >
+                API Name
+              </label>
+
+              <div class="col-md-8">
+                <input
+                  class="form-control"
+                  id="example-text-input-api1"
+                  type="text"
+                  placeholder="Type here..."
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                class="col-md-4 col-form-label form-control-label"
+                for="example-text-input-api2"
+              >
+                API Endpoint
+              </label>
+
+              <div class="col-md-8">
+                <input
+                  class="form-control"
+                  id="example-text-input-api2"
+                  type="text"
+                  placeholder="Type here..."
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                class="col-md-4 col-form-label form-control-label"
+                for="example-text-input-api3"
+              >
+                API Version
+              </label>
+
+              <div class="col-md-8">
+                <input
+                  class="form-control"
+                  id="example-text-input-api3"
+                  type="text"
+                  placeholder="Type here..."
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label
+                class="col-md-4 col-form-label form-control-label"
+                for="example-text-input-api4"
+              >
+                Price Rate
+              </label>
+
+              <div class="col-md-8">
+                <input
+                  class="form-control"
+                  id="example-text-input-api4"
+                  type="text"
+                  placeholder="Type here..."
+                />
+              </div>
+            </div>
+
+            <div class="col-md-12 text-right">
+              <button
+                class="btn btn-default"
+                type="button"
+                (click)="successSwal('submitted')"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mb-0">Total API Comsume Analysis</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="box1">
+                <div class="row">
+                  <div class="col-12 mt-3">
+                    <a class="text-white"><b> 123 </b></a>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <a class="text-white"> POST </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="box2">
+                <div class="row">
+                  <div class="col-12 mt-3">
+                    <a class="text-white"><b> 123 </b></a>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <a class="text-white"> GET </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="col-md-6 mt-3">
+              <div class="box3">
+                <div class="row">
+                  <div class="col-12 mt-3">
+                    <a class="text-white"><b> 123 </b></a>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <a class="text-white"> PUT </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="col-md-6 mt-3">
+              <div class="box4">
+                <div class="row">
+                  <div class="col-12 mt-3">
+                    <a class="text-white"><b> 123 </b></a>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <a class="text-white"> DELETE </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h3 class="m-0">Client List</h3>
+        </div>
+        <div class="card-body">
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="15" [selected]="entries == 15">15</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      (keyup)="filterTable($event)"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="entries != -1 ? entries : undefined"
+              [rows]="temp"
+            >
+              <ngx-datatable-column name="API Name">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.apiName }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="API Version">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.apiVersion }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Total Call Made">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.totalCall }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Status">
+                <!-- <ng-template ngx-datatable-header-template>
+								<span> Announcement Status </span>
+								</ng-template> -->
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <span
+                    *ngIf="row.status == 'success'"
+                    class="badge badge-pill badge-success"
+                    >In-Use</span
+                  >
+                  <span
+                    *ngIf="row.status == 'tobepublish'"
+                    class="badge badge-pill badge-warning"
+                    >To be published</span
+                  >
+                  <span
+                    *ngIf="row.status == 'cancel'"
+                    class="badge badge-pill badge-danger"
+                    >Cancelled</span
+                  >
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Date">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.date }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Deploy by">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.name }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Action">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <!-- <button class=" btn btn-icon btn-danger btn-sm" type="button" title="Action" (click)="openModal(viewAction)">
+                                        <span class=" btn-inner--icon"> <i class=" fas fa-file-pdf"> </i> </span>
+                                    </button> -->
+                  <button
+                    class="btn btn-icon btn-default btn-sm"
+                    type="button"
+                    title="View"
+                    (click)="openModal(viewAction)"
+                  >
+                    <span class="btn-inner--icon">
+                      <i class="far fa-eye"> </i>
+                    </span>
+                  </button>
+                  <!-- <button class=" btn btn-icon btn-success btn-sm" type="button" title="Edit" (click)="openModal(edit)">
+                                        <span class=" btn-inner--icon"> <i class=" fas fa-edit"> </i> </span>
+                                    </button> -->
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h3 class="m-0">Client List</h3>
+        </div>
+        <div class="card-body">
+          <div class="dataTables_wrapper py-4">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="15" [selected]="entries == 15">15</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      (keyup)="filterTable($event)"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="entries != -1 ? entries : undefined"
+              [rows]="temp"
+            >
+              <ngx-datatable-column name="API Name">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.apiName }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="API Version">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.apiVersion }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Total Call Made">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.totalCall }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Status">
+                <!-- <ng-template ngx-datatable-header-template>
+								<span> Announcement Status </span>
+								</ng-template> -->
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <span
+                    *ngIf="row.status == 'success'"
+                    class="badge badge-pill badge-success"
+                    >In Production</span
+                  >
+                  <span
+                    *ngIf="row.status == 'tobepublish'"
+                    class="badge badge-pill badge-warning"
+                    >To be published</span
+                  >
+                  <span
+                    *ngIf="row.status == 'cancel'"
+                    class="badge badge-pill badge-danger"
+                    >In Maintanence</span
+                  >
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Date">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.date }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Deploy by">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  {{ row.name }}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Action">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <!-- <button class=" btn btn-icon btn-success btn-sm" type="button" title="Subscribe" (click)="showNotification()">
+                                        <span class=" btn-inner--icon"> <i class=" fas fa-user-check"> </i> </span>
+                                    </button> -->
+                  <button
+                    class="btn btn-icon btn-default btn-sm"
+                    type="button"
+                    title="View"
+                    (click)="openModal(viewAction)"
+                  >
+                    <span class="btn-inner--icon">
+                      <i class="far fa-eye"> </i>
+                    </span>
+                  </button>
+                  <button
+                    class="btn btn-icon btn-success btn-sm"
+                    type="button"
+                    title="Subscribe"
+                    (click)="showNotification()"
+                  >
+                    <span class="btn-inner--icon">
+                      <i class="fas fa-user-check"> </i>
+                    </span>
+                  </button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #generateToken>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white" id="modal-title-default">
+      Generate Token
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span class="text-white" aria-hidden="true"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> Username </label>
+          <input
+            class="form-control"
+            id="example-text-input-modalapi1"
+            type="text"
+            placeholder="Type here..."
+          />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> Password </label>
+          <input
+            class="form-control"
+            id="example-password-input-modalapi2"
+            type="password"
+            placeholder="Type here..."
+          />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> Client </label>
+
+          <label class="container">
+            <input type="radio" checked="checked" name="radio" />
+            <span class="checkmark"> IP Address </span>
+            <input
+              class="form-control"
+              id="example-text-input-modalapi3"
+              type="text"
+              placeholder="Type here..."
+            />
+          </label>
+          <label class="container">
+            <input type="radio" name="radio" />
+            <span class="checkmark"> Webapp URL </span>
+            <input
+              class="form-control"
+              id="example-text-input-modalapi4"
+              type="text"
+              placeholder="Type here..."
+            />
+          </label>
+          <label class="container">
+            <input type="radio" name="radio" />
+            <span class="checkmark"> IP Address of This Request's Login </span>
+          </label>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> Expiration </label>
+          <select class="form-control custom-select">
+            <option hidden selected>Please pick</option>
+            <option>1 hour</option>
+            <option>2 hour</option>
+            <option>3 hour</option>
+            <option>4 hour</option>
+            <option>5 hour</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> Format </label>
+          <select class="form-control custom-select">
+            <option hidden selected>Please pick</option>
+            <option>HTML</option>
+            <option>PDF</option>
+            <option>DOCX</option>
+            <option>JPG</option>
+          </select>
+        </div>
+      </div>
+      <!-- <div class="col-lg-12">
+                <div class="form-group">
+                    <label class="form-control-label"> Address </label>
+                    <textarea
+                        class=" form-control"
+                        id="exampleFormControlTextarea3"
+                        rows="3"
+                    ></textarea>
+                </div>
+            </div> -->
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      class="btn btn-default text-white"
+      type="button"
+      class="btn btn-success"
+      (click)="successSwal('saved')"
+    >
+      Save
+    </button>
+    <button
+      class="btn btn-danger ml-auto "
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #viewAction>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white" id="modal-title-default">View API</h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span class="text-white" aria-hidden="true"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> API Name </label>
+          <input
+            class="form-control"
+            id="example-text-input-modalapi5"
+            type="text"
+            value="/account_user/"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> API Version </label>
+          <input
+            class="form-control"
+            id="example-text-input-modalapi6"
+            type="text"
+            value="1.0.3"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> Total Call Made </label>
+          <input
+            class="form-control"
+            id="example-text-input-modalapi7"
+            type="text"
+            value="123"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> Status </label>
+          <input
+            class="form-control"
+            id="example-text-input-modalapi10"
+            type="text"
+            value="In-Use"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> Date </label>
+          <input
+            class="form-control"
+            id="example-text-input-modalapi8"
+            type="text"
+            value="2011/04/25"
+            disabled
+          />
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label class="form-control-label"> Deploy By </label>
+          <input
+            class="form-control"
+            id="example-text-input-modalapi9"
+            type="text"
+            value="Tiger Nixon"
+            disabled
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <!-- <button 
+            class=" btn btn-default text-white" 
+            type="button" 
+            class="btn btn-success"
+            (click)="change()"
+        >
+            Request Change
+	    </button> -->
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>

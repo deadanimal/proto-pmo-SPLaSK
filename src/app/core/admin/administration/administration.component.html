@@ -1,0 +1,304 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">Administration</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-laptop text-dark"> </i>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <div class="row align-items-center">
+            <div class="col">
+              <h5 class="h3 mb-0">Total API Comsume Analysis</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="box1">
+                <div class="row">
+                  <div class="col-12 mt-3">
+                    <a class="text-white"><b> 350 </b></a>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <a class="text-white"> Maximum Timeout </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="box2">
+                <div class="row">
+                  <div class="col-12 mt-3">
+                    <a class="text-white"><b> 877 </b></a>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <a class="text-white"> Maximum Retry </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="col-md-4">
+              <div class="box3">
+                <div class="row">
+                  <div class="col-12 mt-3">
+                    <a class="text-white"><b> 678 </b></a>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <a class="text-white"> Maximum Redirect </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+            <!-- <div class="col-md-6 mt-3">
+              <div class="box4">
+                <div class="row">
+                  <div class="col-12 mt-3">
+                    <a class="text-white"><b> 123 </b></a>
+                  </div>
+                  <div class="col-12 mb-3">
+                    <a class="text-white"> DELETE </a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-header bg-secondary">
+          <h3 class="m-0">Website Profile</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <!-- <div class="col-md-12 col-lg-5">
+              <div class="form-group">
+                <label class="form-control-label">Agency</label>
+                <select class="form-control custom-select">
+                  <option hidden selected>Please pick</option>
+                  <option>Agency 1</option>
+                  <option>Agency 2</option>
+                  <option>Agency 3</option>
+                  <option>Agency 4</option>
+                </select>
+              </div>
+            </div> -->
+            <div class="col-md-12 col-lg-9">
+              <div class="form-group">
+                <label
+                  for="example-url-input-webprofile1"
+                  class="form-control-label"
+                  >List of Common Directories (Github URL)</label
+                >
+                <input
+                  class="form-control"
+                  type="url"
+                  placeholder="Enter the website URL here"
+                  id="example-url-input-webprofile1"
+                />
+              </div>
+            </div>
+            <div class="col-md-12 col-lg-3 d-flex align-items-center">
+              <button
+                class="btn btn-default"
+                (click)="openModal(assessment)"
+                type="button"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #assessment>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Assessment
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="dataTables_wrapper py-4">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <div class="dataTables_length" id="datatable_length">
+            <label>
+              Show
+              <select
+                name="datatable_length"
+                aria-controls="datatable"
+                class="form-control form-control-sm"
+                (change)="entriesChange($event)"
+              >
+                <option value="5" [selected]="entries == 5">5</option>
+                <option value="10" [selected]="entries == 10">10</option>
+                <option value="15" [selected]="entries == 15">15</option>
+                <option value="-1" [selected]="entries == -1">All</option>
+              </select>
+              entries
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+          <div id="datatable_filter" class="dataTables_filter">
+            <label>
+              <input
+                type="search"
+                class="form-control form-control-sm"
+                placeholder="Search records"
+                aria-controls="datatable"
+                (keyup)="filterTable($event)"
+              />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <ngx-datatable
+        class="bootstrap selection-cell"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [limit]="entries != -1 ? entries : undefined"
+        [rows]="temp"
+      >
+        <ngx-datatable-column name="Assessment Name">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.typeDoc }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>Progress</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span
+              *ngIf="row.status == 'success'"
+              class="badge badge-pill badge-success"
+              >Comply</span
+            >
+            <span
+              *ngIf="row.status == 'cancel'"
+              class="badge badge-pill badge-warning"
+              >Non-comply</span
+            >
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Attempt">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.clientId }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column>
+          <ng-template ngx-datatable-header-template>
+            <span>Status</span>
+          </ng-template>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span
+              *ngIf="row.status == 'success'"
+              class="badge badge-pill badge-success"
+              >Completed</span
+            >
+            <span
+              *ngIf="row.status == 'cancel'"
+              class="badge badge-pill badge-warning"
+              >Incompleted</span
+            >
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Action">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <button
+              class="btn btn-icon btn-default btn-sm"
+              type="button"
+              title="View"
+            >
+              <span class="btn-inner--icon">
+                <i class="far fa-eye"> </i>
+              </span>
+            </button>
+            <button
+              class="btn btn-icon btn-success btn-sm"
+              type="button"
+              title="Edit"
+              (click)="delete()"
+            >
+              <span class="btn-inner--icon">
+                <i class="fas fa-play"> </i>
+              </span>
+            </button>
+            <!-- <button
+              class="btn btn-icon btn-danger btn-sm"
+              type="button"
+              title="Action"
+              (click)="delete()"
+            >
+              <span class="btn-inner--icon">
+                <i class="fas fa-trash"> </i>
+              </span>
+            </button> -->
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <!-- <button
+      class="btn btn-success"
+      type="button"
+      (click)="successSwal('saved')"
+    >
+      Save
+    </button> -->
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="modalRef.hide()"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>
